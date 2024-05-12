@@ -1,0 +1,83 @@
+class Lista:
+    def __init__(self):
+        self.dados = []
+
+    def inserir(self, numero):
+        self.dados.append(numero)
+
+    def remover_primeiro(self):
+        if self.dados:
+            return self.dados.pop(0)
+        else:
+            return None
+
+class Pilha:
+    def __init__(self):
+        self.dados = []
+
+    def inserir(self, numero):
+        self.dados.append(numero)
+
+    def remover(self):
+        if self.dados:
+            return self.dados.pop()
+        else:
+            return None
+
+class Fila:
+    def __init__(self):
+        self.dados = []
+
+    def inserir(self, numero):
+        self.dados.append(numero)
+
+    def remover(self):
+        if self.dados:
+            return self.dados.pop(0)
+        else:
+            return None
+
+# Passo 1
+lista = Lista()
+for i in range(1, 6):
+    lista.inserir(i)
+
+# Passo 2
+pilha = Pilha()
+for _ in range(5):
+    numero = lista.remover_primeiro()
+    if numero:
+        pilha.inserir(numero)
+
+# Passo 3
+fila = Fila()
+for _ in range(5):
+    numero = pilha.remover()
+    if numero:
+        fila.inserir(numero)
+
+# Passo 4
+for i in range(6, 11):
+    lista.inserir(i)
+
+# Passo 5
+for _ in range(2):
+    for _ in range(5):
+        numero = lista.remover_primeiro()
+        if numero:
+            pilha.inserir(numero)
+
+    for _ in range(5):
+        numero = pilha.remover()
+        if numero:
+            fila.inserir(numero)
+
+# Passo 6
+print("Números na fila:")
+while True:
+    numero = fila.remover()
+    if numero:
+        print(numero)
+    else:
+        break
+    bn 
